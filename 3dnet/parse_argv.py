@@ -17,9 +17,10 @@ def parse_commandline():
      ____  _____             _   
     |___ \|  __ \           | |  
       __) | |  | |_ __   ___| |_ 
-    |__ <| |  | | '_ \ / _ \ __|
-    ___) | |__| | | | |  __/ |_ 
-    |____/|_____/|_| |_|\___|\__|    
+     |__ <| |  | | '_ \ / _ \ __|
+     ___) | |__| | | | |  __/ |_ 
+    |____/|_____/|_| |_|\___|\__|  
+      
     -----------------------------
     '''
 
@@ -39,38 +40,31 @@ def parse_commandline():
     parser.add_argument("-o", "--outdir", metavar="<String>", dest="out",
                         help="output directory")
     parser.set_defaults(out=".")
-    
+  
     # force overwrite
     parser.add_argument('-f', "--force", dest="force", action='store_true',
                         help="force to owerwrite? Inactive by default", default=False)
     
-    # filter by distance (applicable to interfaces)
     parser.add_argument('-plddt', dest="plddt", metavar="<float>", default = None,
                         help="pLDDT threshold if input is a AF2 model")
 
-    # filter by distance (applicable to interfaces)
     parser.add_argument('-cd', "--centroid_dist", dest="centroid_dist", metavar="<float>", default = 7, 
-                        help="Threshold of maximum distance allowed in angstroms between two centroids ")
+                        help="Threshold of maximum distance allowed in angstroms between two residue centroids (< 7A by default) ")
 
-    # filter by distance (applicable to interfaces)
-    parser.add_argument('-seqsep', "--sequence_separation", dest="sequence_separation", metavar="<float>", default = 1,
-                        help="Minimum linear sequence separation between two aminoacids")         
+    parser.add_argument('-seqsep', "--sequence_separation", dest="sequence_separation", metavar="<int>", default = 1,
+                        help="Minimum linear sequence separation between two aminoacids (> 1 by default)")         
                        
-
-    # filter by distance (applicable to interfaces)
-    parser.add_argument('-cs', "--community_size", dest="comm_size", metavar="<float>", default = 1,
+    parser.add_argument('-cs', "--community_size", dest="comm_size", metavar="<int>", default = 1,
                         help="Minimum number of elements to be considered part of the community")         
     
-    # create default output directory
     parser.add_argument('-pdbcomm', dest="pdbcomm", action='store_true',
                         default=False,
                         help="Save PDB file with B-factor is the number of the community? Default False")  
-    # create default output directory
+
     parser.add_argument('-p', "--parallel", dest="parallel", action='store_true',
                         default=False,
                         help="Parallelize process")
 
-    # interfaces database file
     parser.add_argument("-j", "--jobs", dest="njobs", metavar="<int>",
                         help="number of jobs to run in parallel")
     parser.set_defaults(njobs=1)
