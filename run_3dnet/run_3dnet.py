@@ -45,7 +45,7 @@ def getCentroids(model, plddt):
         plddt = -1
     centroids = dict()
     residue_network = 0
-    res  = {'chain' : [], 'node' : [], 'resno': [] }
+    res  = {'chain' : [], 'node' : [], 'resno': [] , 'resid': []}
     for chain in model: 
         chain_length = len([_ for _ in chain.get_residues() if PDB.is_aa(_)])
         if chain_length > 0 :
@@ -60,9 +60,14 @@ def getCentroids(model, plddt):
                             #
                     centroids[residue_network] = np.array(np.mean(arr, axis=0))
                 resno = list(residue.id)[1]
+                try:
+                    resid = chain[resno].resname
+                except:
+                    resid = ""
                 res['chain'].append(chain.id)
                 res['node'].append(residue_network)
                 res['resno'].append(resno)
+                res['resid'].append(resid)
                 residue_network  += 1
     return(centroids, pd.DataFrame(res))
 

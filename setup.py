@@ -148,7 +148,7 @@ setup(
     #   py_modules=["my_module"],
     #
 
-    packages=['3dnet'],  # Required!!!!!
+    packages=['run_3dnet'],  # Required!!!!!
 
     # Specify which Python versions you support. In contrast to the
     # 'Programming Language' classifiers above, 'pip install' will check this
@@ -197,7 +197,7 @@ setup(
     # For example, the following would provide a command called `sample` which
     # executes the function `main` from this package when invoked:
     entry_points={
-        "console_scripts": ['3dnet=3dnet.__init__:main']
+        "console_scripts": ['3dnet=run_3dnet.__init__:main']
     },
 
     # List additional URLs that are relevant to your project as a dict.
