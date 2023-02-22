@@ -71,3 +71,6 @@ ATOM     15  CA  ILE A  21     -30.806  48.516  -4.268  1.00  2.00           C
 ATOM     16  C   ILE A  21     -30.120  47.154  -4.225  1.00  2.00           C  
 ATOM     17  O   ILE A  21     -30.782  46.113  -4.317  1.00  2.00           O 
 ```
+PDB 6LZG colored by chain (left) and by communities (right).
+![](./example_6lzg/6lzg_color_bychain.png)
+![](./example_6lzg/6lzg_color_bycommunities.png)
